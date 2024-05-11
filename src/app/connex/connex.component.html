@@ -1,0 +1,43 @@
+<body>
+    <div class="container">
+      <h1 class="my-4 xa" style="color: black;">Connexion</h1>
+      <div class="row justify-content-left">
+        <div class="col-md-6">
+          <div class="card custom-bg-color text-black">
+            <div class="card-body">
+              <div *ngIf="errorMessage" class="error-message">
+                {{ errorMessage }}
+              </div> 
+              <form [formGroup]="logForm" (ngSubmit)="onLog()">
+                <div class="form-group text-center">
+                  <label for="emailId" class="font-weight-bold b"><i class="fas fa-user"></i> Adresse email :</label>
+                  <br><br>
+                  <input type="email" class="form-control" id="emailId" placeholder="Entrez votre adresse mail" formControlName="emailId">
+                  <br>
+                  <div *ngIf="logForm.get('emailId').invalid && (logForm.get('emailId').dirty || logForm.get('emailId').touched)" class="error-message">
+                    {{ getErrorMessage('emailId') }}
+                  </div>
+                </div>
+                <div class="form-group text-center">
+                  <label for="password" class="font-weight-bold k"><i class="fa fa-key" aria-hidden="true"></i> Password :</label>
+                  <br><br>
+                  <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe" formControlName="password">
+                  <br>
+                  <div *ngIf="logForm.get('password').invalid && (logForm.get('password').dirty || logForm.get('password').touched)" class="error-message">
+                    {{ getErrorMessage('password') }}
+                  </div>
+                </div>
+                <div class="form-group text-center">
+                  <button type="submit" class="btn btn-dark" [disabled]="logForm.invalid">
+                    <i class="fas fa-sign-in-alt"></i> Connexion
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
